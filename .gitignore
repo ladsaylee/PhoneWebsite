@@ -4,3 +4,9 @@
 
 /.vs
 /src/.vs/phoneWebsite-microservices/v16
+/src/Services/Catalog/Catalog.API/bin/Debug/net5.0
+/src/Services/Catalog/Catalog.API/obj
+/src/.vs/phoneWebsite-microservices
+/src/obj
+/src/Services/Basket/Basket.API/bin/Debug/net5.0
+/src/Services/Basket/Basket.API/obj

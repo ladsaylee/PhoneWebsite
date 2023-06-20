@@ -1,0 +1,25 @@
+version: '3.4'
+# serives are the app which we want to run on docker. volumes is used to store data outside the conatiner 
+# on docker so deleteling the conatiner will not delete the data
+# enivormnet can b dev, test, prod and the connection string is the one that overrides the one in appsettings.
+# ports is the one that is exposed to the outer enviroment local_port:docker_port
+
+services:
+  catalogdb:
+    container_name: catalogdb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+        
+  catalog.api:
+    container_name: catalog_api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017"
+    depends_on:
+      - catalogdb 
+    ports:
+      - "8000:80"
